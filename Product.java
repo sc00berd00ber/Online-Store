@@ -5,15 +5,15 @@ public class Product {
     double price;
     String department;
 
-    //Constructor
-    Product(String sku, String productName, double price, String department){
+    // Constructor
+    Product(String sku, String productName, double price, String department) {
         this.sku = sku;
         this.productName = productName;
         this.price = price;
         this.department = department;
     }
 
-    //Getters
+    // Getters
     public String getSku() {
         return sku;
     }
@@ -30,7 +30,7 @@ public class Product {
         return department;
     }
 
-    //Setters
+    // Setters
     public void setSku(String sku) {
         this.sku = sku;
     }
