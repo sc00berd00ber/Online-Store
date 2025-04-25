@@ -1,44 +1,80 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class DisplayCart {
-    private List<Product> productsList;
-    Scanner sacn = new Scanner(System.in);
-    ArrayList<String> addProduct = new ArrayList<>();
+    private static Map<Product, Integer> cartItems = new HashMap<>();
+    private static Scanner scanner = new Scanner(System.in);
 
-    public DisplayCart(List<Product> productsList) {
-        this.productsList = productsList;
+    // Add product to cart
+    public static void addProduct(Product product) {
+        cartItems.put(product, cartItems.getOrDefault(product, 0) + 1);
     }
 
-    public static void main(String[] args) {
-        Scanner sacn = new Scanner(System.in);
-        ArrayList<String> addProduct = new ArrayList<>();
-
+    // Show cart screen
+    public void showCart() {
         while (true) {
-            System.out.println("\t\t-------CART-------");
-            System.out.println(addProduct);
+            System.out.println("\n======= Your Cart =======");
 
-            System.out.println("1)\tCheck Out");
-            System.out.println("2)\tRemove");
-            System.out.println("3)\tBack");
-            System.out.println("4)\tExit");
+            if (cartItems.isEmpty()) {
+                System.out.println("Cart is empty.");
+            } else {
+                int index = 1;
+                double total = 0.0;
 
-            System.out.print("Choose A Number (1-4): ");
-            String input = sacn.nextLine();
+                for (Map.Entry<Product, Integer> entry : cartItems.entrySet()) {
+                    Product product = entry.getKey();
+                    int quantity = entry.getValue();
+                    double subtotal = product.getPrice() * quantity;
+                    total += subtotal;
+
+                    System.out.println(index + ") " + product.getProductName() +
+                            " | Qty: " + quantity +
+                            " | Price: $" + product.getPrice() +
+                            " | Subtotal: $" + String.format("%.2f", subtotal));
+                    index++;
+                }
+
+                System.out.println("Total: $" + String.format("%.2f", total));
+            }
+
+            // Cart menu
+            System.out.println("\nOptions:");
+            System.out.println("1. Check Out");
+            System.out.println("2. Remove Item");
+            System.out.println("3. Back to Home");
+            System.out.print("Choose an option: ");
+            String input = scanner.nextLine();
 
             if (input.equals("1")) {
-                System.out.println("Checkout not yet implemented.");
+                System.out.println("Checkout feature coming soon...");
             } else if (input.equals("2")) {
-                System.out.println("Remove item - not yet implemented.");
+                removeProduct();
             } else if (input.equals("3")) {
-                System.out.println("Back to Home - not yet implemented.");
-            } else if (input.equals("4")) {
-                System.out.println("Exiting...");
                 break;
             } else {
-                System.out.println("Invalid Input. Try Again:");
+                System.out.println("Invalid option. Try again.");
             }
+        }
+    }
+
+    // Remove product from cart by SKU
+    private void removeProduct() {
+        System.out.print("Enter SKU of product to remove: ");
+        String sku = scanner.nextLine();
+
+        boolean found = false;
+        for (Product product : cartItems.keySet()) {
+            if (product.getSku().equalsIgnoreCase(sku)) {
+                cartItems.remove(product);
+                System.out.println(product.getProductName() + " removed from your cart.");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Product with SKU " + sku + " not found in cart.");
         }
     }
 }
