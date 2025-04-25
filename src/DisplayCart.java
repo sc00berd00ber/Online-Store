@@ -11,6 +11,7 @@ public class DisplayCart {
         cartItems.put(product, cartItems.getOrDefault(product, 0) + 1);
     }
 
+
     // Show cart screen
     public void showCart() {
         while (true) {
