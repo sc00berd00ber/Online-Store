@@ -1,6 +1,6 @@
 public class Product {
 
-  Product-class
+ // Product class
     String sku;
     String productName;
     double price;
@@ -48,4 +48,9 @@ public class Product {
         this.department = department;
     }
 
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+
 }
+
