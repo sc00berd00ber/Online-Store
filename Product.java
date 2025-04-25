@@ -1,5 +1,6 @@
 public class Product {
 
+  Product-class
     String sku;
     String productName;
     double price;
@@ -46,4 +47,5 @@ public class Product {
     public void setDepartment(String department) {
         this.department = department;
     }
+
 }
