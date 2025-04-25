@@ -52,6 +52,5 @@ public class Product {
         return "SKU = " + sku + " | Product Name = " + productName + " | Price = " + price +
                 " | Department = " + department;
     }
-
 }
 
