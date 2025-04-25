@@ -1,6 +1,5 @@
 public class Product {
 
- // Product class
     String sku;
     String productName;
     double price;
@@ -48,8 +47,10 @@ public class Product {
         this.department = department;
     }
 
-    public static void main(String[] args) {
-        System.out.println("Hello");
+    @Override
+    public String toString() {
+        return "SKU = " + sku + " | Product Name = " + productName + " | Price = " + price +
+                " | Department = " + department;
     }
 
 }
