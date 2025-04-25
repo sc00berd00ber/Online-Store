@@ -74,6 +74,7 @@ public class DisplayCart {
             }
         }
 
+
         if (!found) {
             System.out.println("Product with SKU " + sku + " not found in cart.");
         }
