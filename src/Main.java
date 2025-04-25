@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public class ProductLoader {
+    public static class ProductLoader {
         public static void main(String[] args) {
             String csvFile = "products.csv";
             String line;
@@ -27,7 +27,7 @@ public class Main {
                     products.add(product);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Invalid input!");
             }
 
             // Print loaded products
