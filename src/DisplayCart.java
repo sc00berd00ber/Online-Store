@@ -10,8 +10,6 @@ public class DisplayCart {
     public static void addProduct(Product product) {
         cartItems.put(product, cartItems.getOrDefault(product, 0) + 1);
     }
-
-
     // Show cart screen
     public void showCart() {
         while (true) {
@@ -73,7 +71,6 @@ public class DisplayCart {
                 break;
             }
         }
-
 
         if (!found) {
             System.out.println("Product with SKU " + sku + " not found in cart.");
