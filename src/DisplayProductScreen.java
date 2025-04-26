@@ -1,47 +1,49 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 public class DisplayProductScreen{
-    private List<Product> productList;
+    private ArrayList<Product> productList;
     private DisplayCart cart;
 
     //Constractor
-    public DisplayProductScreen(List<Product> productList,DisplayCart cart){
+     DisplayProductScreen(ArrayList<Product> productList,DisplayCart cart){
         this.productList = productList;
         this.cart = cart;
     }
 
-    public void show(){
+    public void show() {
         Scanner scanner = new Scanner(System.in);
 
-        while(true){
+        while (true) {
             System.out.println("\n== Display Products ==");
-        for (Product product : productList){
-            System.out.println(product);
+            for (Product product : productList) {
+                System.out.println(product);
+            }
+            System.out.println("\nOptions:");
+            System.out.println("1.Search Products");
+            System.out.println("2.Add Products to the Cart");
+            System.out.println("3.Go back to Home");
+
+            System.out.print("Choose an option:");
+            String input = scanner.nextLine();
+
+            if (input.equals("1")) {
+                searchProducts();
+            } else if (input.equals("2")) {
+                addProductToCart(scanner);
+            } else if (input.equals("3")) {
+                break;
+            } else {
+                System.out.println("Invalid option, try again");
+
+
+            }
         }
-        System.out.println("\nOptions:");
-        System.out.println("1.Search Products");
-        System.out.println("2.Add Products to the Cart");
-        System.out.println("3.Go back to Home");
-
-        System.out.print("Choose an option:");
-        String input =scanner.nextLine();
-
-        if(input.equals("1")) {
-            searchProducts(scanner);
-        } else if (input.equals("2")) {
-            addProductToCart(scanner);
-        } else if (input.equals("3")) {
-            break;
-        } else {
-            System.out.println("Invalid option, try again");
-
-
-        }
-    }
 
     }
 //search by name,price
-    private void searchProducts(Scanner scanner){
+    public void searchProducts(){
+        Scanner scanner = new Scanner(System.in);
         System.out.println("\nSearch by:");
         System.out.println("1. Product Name");
         System.out.println("2. Price");

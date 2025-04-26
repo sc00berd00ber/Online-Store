@@ -2,10 +2,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
-    public static class ProductLoader {
+
         public static void main(String[] args) {
             String csvFile = "products.csv";
             String line;
@@ -34,7 +35,13 @@ public class Main {
             for (Product p : products) {
                 System.out.println(p);
             }
-        }
-    }
 
+            DisplayCart c = new DisplayCart();
+            ArrayList<Product> productList = new ArrayList<Product>();
+
+            DisplayProductScreen dps = new DisplayProductScreen(productList, c);
+            dps.searchProducts();
+
+        }
 }
+
